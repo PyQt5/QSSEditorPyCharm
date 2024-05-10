@@ -25,6 +25,12 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable
+            parentId="language"
+            groupWeight="-500"
+            instance="irony.pycharm.qsseditor.QSSConfigurable"
+            id="irony.pycharm.qsseditor.QSSConfigurable"
+            displayName="QSS"/>
     </extensions>
     <actions>
         <action id="ApplyAction" class="irony.pycharm.qsseditor.ApplyAction" text="Apply Style" description="Apply Style">
