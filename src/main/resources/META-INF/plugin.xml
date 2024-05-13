@@ -25,11 +25,13 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <applicationService
+                serviceImplementation="irony.pycharm.qsseditor.SettingsState"/>
         <applicationConfigurable
             parentId="language"
             groupWeight="-500"
-            instance="irony.pycharm.qsseditor.QSSConfigurable"
-            id="irony.pycharm.qsseditor.QSSConfigurable"
+            instance="irony.pycharm.qsseditor.SettingsConfigurable"
+            id="irony.pycharm.qsseditor.SettingsConfigurable"
             displayName="QSS"/>
     </extensions>
     <actions>
