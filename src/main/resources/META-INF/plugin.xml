@@ -26,16 +26,16 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <applicationService
-                serviceImplementation="irony.pycharm.qsseditor.SettingsState"/>
+                serviceImplementation="irony.pycharm.qsseditor.QSSService"/>
         <applicationConfigurable
             parentId="language"
             groupWeight="-500"
-            instance="irony.pycharm.qsseditor.SettingsConfigurable"
-            id="irony.pycharm.qsseditor.SettingsConfigurable"
+            instance="irony.pycharm.qsseditor.QSSConfigurable"
+            id="irony.pycharm.qsseditor.QSSConfigurable"
             displayName="QSS"/>
     </extensions>
     <actions>
-        <action id="ApplyAction" class="irony.pycharm.qsseditor.ApplyAction">
+        <action id="ApplyAction" class="irony.pycharm.qsseditor.QSSAction">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>

@@ -7,9 +7,9 @@ import org.jetbrains.annotations.Nullable
 import org.jetbrains.annotations.PropertyKey
 import java.util.function.Supplier
 
-object LangBundle {
-    private const val BUNDLE: @NonNls String = "messages.LangBundle"
-    private val INSTANCE = DynamicBundle(LangBundle::class.java, BUNDLE)
+object QSSBundle {
+    private const val BUNDLE: @NonNls String = "messages.QSSBundle"
+    private val INSTANCE = DynamicBundle(QSSBundle::class.java, BUNDLE)
 
     fun message(
         key: @PropertyKey(resourceBundle = BUNDLE) String,

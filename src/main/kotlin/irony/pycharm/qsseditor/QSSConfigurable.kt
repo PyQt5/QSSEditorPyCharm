@@ -8,21 +8,21 @@ import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.panel
 
-class SettingsConfigurable : BoundSearchableConfigurable(
+class QSSConfigurable : BoundSearchableConfigurable(
     "QSS Editor",
-    LangBundle.message("setting.topic.title", "QSS Editor Configurable")
+    QSSBundle.message("setting.topic.title", "QSS Editor Configurable")
 ), NoScroll {
 
     override fun createPanel() : DialogPanel {
         return panel {
-            row(LangBundle.message("setting.host.title", "Host")) {
-                textField().bindText(SettingsState.instance::host)
+            row(QSSBundle.message("setting.host.title", "Host")) {
+                textField().bindText(QSSService.instance::host)
             }
-            row(LangBundle.message("setting.port.title", "Port")) {
-                textField().bindIntText(SettingsState.instance::port)
+            row(QSSBundle.message("setting.port.title", "Port")) {
+                textField().bindIntText(QSSService.instance::port)
             }
-            row(LangBundle.message("setting.auto.title","Auto Apply")) {
-                checkBox("").bindSelected(SettingsState.instance::auto)
+            row(QSSBundle.message("setting.auto.title","Auto Apply")) {
+                checkBox("").bindSelected(QSSService.instance::auto)
             }
         }
     }
