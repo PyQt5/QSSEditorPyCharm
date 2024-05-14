@@ -35,7 +35,7 @@
             displayName="QSS"/>
     </extensions>
     <actions>
-        <action id="ApplyAction" class="irony.pycharm.qsseditor.ApplyAction" text="Apply Style" description="Apply Style">
+        <action id="ApplyAction" class="irony.pycharm.qsseditor.ApplyAction">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
