@@ -14,6 +14,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("org.java-websocket:Java-WebSocket:1.5.6")
+}
+
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {

@@ -10,6 +10,7 @@ import com.intellij.openapi.project.Project
 class QSSAction : AnAction(QSSBundle.message("action.apply.title", "Apply Style")) {
 
     override fun update(e: AnActionEvent) {
+        // 默认菜单不可用，需要判断当前文件类型
         e.presentation.isEnabledAndVisible = false
         val project: Project = e.project ?: return
         val editor: Editor = e.getData(CommonDataKeys.EDITOR) ?: return

@@ -25,14 +25,15 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <backgroundPostStartupActivity implementation="irony.pycharm.qsseditor.QSSStartup"/>
         <applicationService
-                serviceImplementation="irony.pycharm.qsseditor.QSSService"/>
+                serviceImplementation="irony.pycharm.qsseditor.QSSState"/>
         <applicationConfigurable
             parentId="language"
             groupWeight="-500"
             instance="irony.pycharm.qsseditor.QSSConfigurable"
             id="irony.pycharm.qsseditor.QSSConfigurable"
-            displayName="QSS"/>
+            displayName="QSS Editor"/>
     </extensions>
     <actions>
         <action id="ApplyAction" class="irony.pycharm.qsseditor.QSSAction">

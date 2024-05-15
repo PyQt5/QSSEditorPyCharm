@@ -16,13 +16,13 @@ class QSSConfigurable : BoundSearchableConfigurable(
     override fun createPanel() : DialogPanel {
         return panel {
             row(QSSBundle.message("setting.host.title", "Host")) {
-                textField().bindText(QSSService.instance::host)
+                textField().bindText(QSSState.instance::host)
             }
             row(QSSBundle.message("setting.port.title", "Port")) {
-                textField().bindIntText(QSSService.instance::port)
+                intTextField(IntRange(1000, 65535)).bindIntText(QSSState.instance::port)
             }
             row(QSSBundle.message("setting.auto.title","Auto Apply")) {
-                checkBox("").bindSelected(QSSService.instance::auto)
+                checkBox("").bindSelected(QSSState.instance::auto)
             }
         }
     }
