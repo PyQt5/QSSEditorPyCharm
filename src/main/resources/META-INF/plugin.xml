@@ -31,8 +31,8 @@
         <applicationConfigurable
             parentId="language"
             groupWeight="-500"
-            instance="irony.pycharm.qsseditor.QSSConfigurable"
-            id="irony.pycharm.qsseditor.QSSConfigurable"
+            instance="irony.pycharm.qsseditor.QSSConfig"
+            id="irony.pycharm.qsseditor.QSSConfig"
             displayName="QSS Editor"/>
     </extensions>
     <actions>

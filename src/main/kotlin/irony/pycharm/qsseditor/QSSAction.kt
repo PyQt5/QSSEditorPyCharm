@@ -3,9 +3,11 @@ package irony.pycharm.qsseditor
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 
+private val LOG = logger<QSSAction>()
 
 class QSSAction : AnAction(QSSBundle.message("action.apply.title", "Apply Style")) {
 

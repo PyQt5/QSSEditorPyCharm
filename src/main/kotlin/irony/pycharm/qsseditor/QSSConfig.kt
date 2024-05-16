@@ -1,5 +1,6 @@
 package irony.pycharm.qsseditor
 
+import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.options.Configurable.NoScroll
 import com.intellij.openapi.ui.DialogPanel
@@ -8,7 +9,9 @@ import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.panel
 
-class QSSConfigurable : BoundSearchableConfigurable(
+private val LOG = logger<QSSConfig>()
+
+class QSSConfig : BoundSearchableConfigurable(
     "QSS Editor",
     QSSBundle.message("setting.topic.title", "QSS Editor Configurable")
 ), NoScroll {
