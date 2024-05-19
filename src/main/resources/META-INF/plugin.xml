@@ -35,8 +35,8 @@
             id="irony.pycharm.qsseditor.QSSConfig"
             displayName="QSS Editor"/>
     </extensions>
-    <actions>
-        <action id="ApplyAction" class="irony.pycharm.qsseditor.QSSAction">
+    <actions resource-bundle="messages.QSSBundle">
+        <action id="apply" class="irony.pycharm.qsseditor.QSSAction" text="Apply Style">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
