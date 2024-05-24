@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.23"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.23"
     id("org.jetbrains.intellij") version "1.17.2"
 }
 
@@ -8,14 +9,17 @@ group = "irony.pycharm"
 version = "1.0.0"
 
 repositories {
-    maven { url = uri("https://maven.aliyun.com/repository/public")}
-    maven { url = uri("https://maven.aliyun.com/repository/central")}
-    maven { url = uri("https://maven.aliyun.com/repository/google")}
+    maven { url = uri("https://maven.aliyun.com/repository/public") }
+    maven { url = uri("https://maven.aliyun.com/repository/central") }
+    maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+    maven { url = uri("https://maven.aliyun.com/repository/google") }
     mavenCentral()
 }
 
 dependencies {
     implementation("org.java-websocket:Java-WebSocket:1.5.6")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 }
 
 // Configure Gradle IntelliJ Plugin
