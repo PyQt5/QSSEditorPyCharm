@@ -13,10 +13,7 @@
 package irony.pycharm.qsseditor
 import com.intellij.openapi.diagnostic.logger
 import kotlinx.serialization.json.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.WebSocket
-import okhttp3.WebSocketListener
+import okhttp3.*
 import java.util.concurrent.TimeUnit
 
 private val Log = logger<QSSClient>()
@@ -37,14 +34,14 @@ class QSSClient : WebSocketListener() {
     }
 
     override fun onOpen(
-        webSocket: okhttp3.WebSocket,
-        response: okhttp3.Response,
+        webSocket: WebSocket,
+        response: Response,
     ) {
         Log.debug("onOpen")
     }
 
     override fun onMessage(
-        webSocket: okhttp3.WebSocket,
+        webSocket: WebSocket,
         text: String,
     ) {
         Log.debug("onMessage: $text")
@@ -65,7 +62,7 @@ class QSSClient : WebSocketListener() {
     }
 
     override fun onClosing(
-        webSocket: okhttp3.WebSocket,
+        webSocket: WebSocket,
         code: Int,
         reason: String,
     ) {
@@ -78,9 +75,9 @@ class QSSClient : WebSocketListener() {
     }
 
     override fun onFailure(
-        webSocket: okhttp3.WebSocket,
+        webSocket: WebSocket,
         t: Throwable,
-        response: okhttp3.Response?,
+        response: Response?,
     ) {
         Log.warn("onFailure, ${t.message}")
         if (done) {
