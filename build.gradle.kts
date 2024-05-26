@@ -17,7 +17,6 @@ repositories {
 }
 
 dependencies {
-    implementation("org.java-websocket:Java-WebSocket:1.5.6")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 }

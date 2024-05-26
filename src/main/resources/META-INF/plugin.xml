@@ -8,7 +8,7 @@
     <name>QSSEditor</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="892768447@qq.com" url="https://github.com/PyQt5">PyQt5</vendor>
+    <vendor email="892768447@qq.com" url="https://github.com/PyQt5">Irony</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -35,6 +35,12 @@
             id="irony.pycharm.qsseditor.QSSConfig"
             displayName="QSS Editor"/>
     </extensions>
+
+    <applicationListeners>
+        <listener class="irony.pycharm.qsseditor.QSSDynamic"
+                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+    </applicationListeners>
+
     <actions resource-bundle="messages.QSSBundle">
         <action id="apply" class="irony.pycharm.qsseditor.QSSAction" text="Apply Style">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>

@@ -19,7 +19,7 @@ private val Log = logger<QSSStartup>()
 internal class QSSStartup : StartupActivity {
     override fun runActivity(project: Project) {
         // 启动客户端连接
-        Log.debug("project[${project.name}] opened")
+        Log.info("project[${project.name}] opened")
         QSSClient.connect(QSSState.instance.host, QSSState.instance.port)
     }
 }
