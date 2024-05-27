@@ -14,29 +14,29 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-# QSSEditor
+<h2>QSSEditor</h2>
 
-QSS Editor Proxy For Qt Designer
+QSS Editor Proxy For Qt Designer<br/>
 
-## QQ Group
+<h3>QQ Group</h3>
 
-[PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+<a href="https://jq.qq.com/?_wv=1027&k=5QVVEdF">PyQt 学习</a>
 
-## Notice
+<h3>Notice</h3>
 
-Must Install Proxy Server from [QSSEditor](https://github.com/PyQt5/QSSEditor/releases) first
+Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/>
 
-## Configure
+<a href="https://github.com/PyQt5/QSSEditor/releases">Download QSSEditor</a><br/>
 
-`vscode` Setting Panel, search `QSSEditor`
+<h3>Configure</h3>
 
-- auto apply
-- server host
-- server port
+`Settings` -> `Languages & Frameworks` -> `QSS Editor`<br/>
+设置 -> 语言和框架 -> QSS Editor
 
-## Preview
+<h3>Preview</h3>
 
-![QSSEditor](https://github.com/PyQt5/QSSEditor/raw/main/QSSEditor.gif)
+<img alt="QSSEditor" src="https://github.com/PyQt5/QSSEditor/raw/main/QSSEditorIdea.gif" />
+
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
