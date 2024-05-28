@@ -50,11 +50,13 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
         <applicationService
                 serviceImplementation="irony.pycharm.qsseditor.QSSState"/>
         <applicationConfigurable
-            parentId="language"
-            groupWeight="-500"
-            instance="irony.pycharm.qsseditor.QSSConfig"
-            id="irony.pycharm.qsseditor.QSSConfig"
-            displayName="QSS Editor"/>
+                parentId="language"
+                groupWeight="-500"
+                instance="irony.pycharm.qsseditor.QSSConfig"
+                id="irony.pycharm.qsseditor.QSSConfig"
+                displayName="QSS Editor"/>
+        <editorFactoryDocumentListener
+                implementation="irony.pycharm.qsseditor.QSSDocumentListener"/>
     </extensions>
 
     <applicationListeners>

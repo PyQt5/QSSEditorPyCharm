@@ -41,5 +41,6 @@ class QSSAction : AnAction() {
         if (text.isEmpty()) {
             return
         }
+        QSSClient.applyStyle(listOf(text))
     }
 }
