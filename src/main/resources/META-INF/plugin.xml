@@ -1,11 +1,15 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
+<idea-plugin url="https://github.com/PyQt5/QSSEditorPyCharm.git">
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
     <id>irony.ide.plugin.qsseditor</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>QSSEditor</name>
+
+    <version>1.0.0</version>
+
+    <idea-version since-build="213"/>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="892768447@qq.com" url="https://github.com/PyQt5">Irony</vendor>
@@ -35,13 +39,26 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
 
 <h3>Preview</h3>
 
-<img alt="QSSEditor" src="https://github.com/PyQt5/QSSEditor/raw/main/QSSEditorIdea.gif" />
+<img alt="QSSEditor" src="https://github.com/PyQt5/QSSEditor/raw/main/QSSEditor.gif" />
 
   ]]></description>
+
+    <change-notes><![CDATA[
+<h2>New Features</h2>
+<ul>
+  <li>1.0.0 - Initial release of the plugin.</li>
+</ul>
+]]></change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+
+    <actions resource-bundle="messages.QSSBundle">
+        <action id="apply" class="irony.pycharm.qsseditor.QSSAction" text="Apply Style">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+    </actions>
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
@@ -64,9 +81,5 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
                   topic="com.intellij.ide.plugins.DynamicPluginListener"/>
     </applicationListeners>
 
-    <actions resource-bundle="messages.QSSBundle">
-        <action id="apply" class="irony.pycharm.qsseditor.QSSAction" text="Apply Style">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-        </action>
-    </actions>
+    <resource-bundle>messages.QSSBundle</resource-bundle>
 </idea-plugin>
