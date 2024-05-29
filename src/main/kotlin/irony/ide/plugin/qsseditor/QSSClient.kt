@@ -117,7 +117,10 @@ class QSSClient : WebSocketListener() {
                 }
             }
 
-            Companion.host = host
+            Companion.host =
+                host.ifEmpty {
+                    "localhost"
+                }
             Companion.port = port
 
             disconnect()

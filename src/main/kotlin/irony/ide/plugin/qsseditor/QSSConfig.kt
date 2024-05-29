@@ -43,4 +43,19 @@ class QSSConfig :
             }
         }
     }
+
+    override fun apply() {
+        super.apply()
+        QSSClient.connect(QSSState.instance::host.get(), QSSState.instance::port.get())
+    }
+
+    override fun reset() {
+        super.reset()
+        QSSClient.connect(QSSState.instance::host.get(), QSSState.instance::port.get())
+    }
+
+    override fun enableSearch(option: String?): Runnable? {
+        return super.enableSearch(option)
+        // TODO: 搜索配置界面定位
+    }
 }

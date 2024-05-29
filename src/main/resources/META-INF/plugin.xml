@@ -72,6 +72,9 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
                 instance="irony.ide.plugin.qsseditor.QSSConfig"
                 id="irony.ide.plugin.qsseditor.QSSConfig"
                 displayName="QSS Editor"/>
+        <completion.contributor
+                language="any"
+                implementationClass="irony.ide.plugin.qsseditor.QSSCompletion"/>
         <editorFactoryDocumentListener
                 implementation="irony.ide.plugin.qsseditor.QSSListener"/>
     </extensions>
