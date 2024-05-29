@@ -10,7 +10,6 @@
 
 package irony.pycharm.qsseditor
 
-import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.options.Configurable.NoScroll
 import com.intellij.openapi.ui.DialogPanel
@@ -19,23 +18,27 @@ import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.panel
 
-private val Log = logger<QSSConfig>()
+@RequiresOptIn(level = RequiresOptIn.Level.WARNING)
+@Retention(AnnotationRetention.BINARY)
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
+annotation class ExperimentalQSSConfig
 
+@ExperimentalQSSConfig
 class QSSConfig :
     BoundSearchableConfigurable(
         "QSS Editor",
-        QSSBundle.message("setting.topic.title", "QSS Editor Configurable"),
+        QSSBundle.message("setting.topic.text", "QSS Editor Configurable"),
     ),
     NoScroll {
     override fun createPanel(): DialogPanel {
         return panel {
-            row(QSSBundle.message("setting.host.title", "Host")) {
+            row(QSSBundle.message("setting.host.text", "Host")) {
                 textField().bindText(QSSState.instance::host)
             }
-            row(QSSBundle.message("setting.port.title", "Port")) {
+            row(QSSBundle.message("setting.port.text", "Port")) {
                 intTextField(IntRange(1000, 65535)).bindIntText(QSSState.instance::port)
             }
-            row(QSSBundle.message("setting.auto.title", "Auto Apply")) {
+            row(QSSBundle.message("setting.auto.text", "Auto Apply")) {
                 checkBox("").bindSelected(QSSState.instance::auto)
             }
         }

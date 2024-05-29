@@ -42,7 +42,7 @@ class QSSClient : WebSocketListener() {
         response: Response,
     ) {
         twice = 0
-        Log.debug("onOpen")
+        Log.info("onOpen")
     }
 
     override fun onMessage(
@@ -161,6 +161,10 @@ class QSSClient : WebSocketListener() {
             disconnect()
         }
 
+        fun isConnected(): Boolean {
+            return socket != null
+        }
+
         private fun buildMessage(
             method: String,
             message: List<String>,
@@ -181,7 +185,7 @@ class QSSClient : WebSocketListener() {
             @Nullable message: List<String>,
             delay: Boolean = false,
         ) {
-            if (message.isEmpty()) {
+            if (socket == null || message.isEmpty()) {
                 return
             }
             if (delay) {

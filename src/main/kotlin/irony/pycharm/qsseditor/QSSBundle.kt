@@ -15,21 +15,10 @@ import org.jetbrains.annotations.Nls
 import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.Nullable
 import org.jetbrains.annotations.PropertyKey
-import java.util.function.Supplier
 
-object QSSBundle {
-    private const val BUNDLE: @NonNls String = "messages.QSSBundle"
-    private val INSTANCE = DynamicBundle(QSSBundle::class.java, BUNDLE)
+private const val BUNDLE: @NonNls String = "messages.QSSBundle"
 
-    fun message(
-        key:
-            @PropertyKey(resourceBundle = BUNDLE)
-            String,
-        vararg params: Any,
-    ): @Nls String {
-        return INSTANCE.messageOrDefault(key, key, *params)
-    }
-
+object QSSBundle : DynamicBundle(BUNDLE) {
     fun message(
         key:
             @PropertyKey(resourceBundle = BUNDLE)
@@ -37,13 +26,6 @@ object QSSBundle {
         @Nullable @Nls defaultValue: String,
         vararg params: Any,
     ): @Nls String {
-        return INSTANCE.messageOrDefault(key, defaultValue, *params)
-    }
-
-    fun lazyMessage(
-        @PropertyKey(resourceBundle = BUNDLE) key: String,
-        vararg params: Any,
-    ): Supplier<@Nls String> {
-        return INSTANCE.getLazyMessage(key, *params)
+        return messageOrDefault(key, defaultValue, *params)
     }
 }

@@ -10,7 +10,6 @@
 
 package irony.pycharm.qsseditor
 
-import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -20,8 +19,13 @@ import com.intellij.openapi.vfs.VirtualFile
 
 private val Log = logger<QSSAction>()
 
+enum class ActionUpdateThread {
+    BGT,
+    EDT,
+}
+
 class QSSAction : AnAction() {
-    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
+    fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 
     override fun update(e: AnActionEvent) {
         // 默认菜单不可用，需要判断当前文件类型
@@ -31,7 +35,7 @@ class QSSAction : AnAction() {
         if (!(ext == "qss" || ext == "css" || ext == "style")) {
             return
         }
-        e.presentation.isEnabledAndVisible = true
+        e.presentation.isEnabledAndVisible = QSSClient.isConnected()
     }
 
     override fun actionPerformed(e: AnActionEvent) {

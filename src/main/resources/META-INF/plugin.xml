@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>irony.pycharm.QSSEditor</id>
+    <id>irony.ide.plugin.qsseditor</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
@@ -46,7 +46,7 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <backgroundPostStartupActivity implementation="irony.pycharm.qsseditor.QSSStartup"/>
+        <postStartupActivity implementation="irony.pycharm.qsseditor.QSSStartup"/>
         <applicationService
                 serviceImplementation="irony.pycharm.qsseditor.QSSState"/>
         <applicationConfigurable
@@ -56,7 +56,7 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
                 id="irony.pycharm.qsseditor.QSSConfig"
                 displayName="QSS Editor"/>
         <editorFactoryDocumentListener
-                implementation="irony.pycharm.qsseditor.QSSDocumentListener"/>
+                implementation="irony.pycharm.qsseditor.QSSListener"/>
     </extensions>
 
     <applicationListeners>
