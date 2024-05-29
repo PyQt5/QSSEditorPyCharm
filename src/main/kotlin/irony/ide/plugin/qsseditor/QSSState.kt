@@ -8,7 +8,7 @@
  * Site: https://pyqt.site , https://pyqt5.com
  */
 
-package irony.pycharm.qsseditor
+package irony.ide.plugin.qsseditor
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.BaseState
@@ -23,7 +23,7 @@ class ConfigState : BaseState() {
     var port: Int by property(61052)
 }
 
-@State(name = "irony.pycharm.qsseditor.QSSState", storages = [Storage("QSSEditorSetting.xml", roamingType = RoamingType.DEFAULT)])
+@State(name = "irony.ide.plugin.qsseditor.QSSState", storages = [Storage("QSSEditorSetting.xml", roamingType = RoamingType.DEFAULT)])
 internal class QSSState : SimplePersistentStateComponent<ConfigState>(ConfigState()) {
     var auto: Boolean
         get() = state.auto

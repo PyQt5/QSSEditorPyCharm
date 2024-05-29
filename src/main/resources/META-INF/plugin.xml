@@ -55,7 +55,7 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
     <depends>com.intellij.modules.platform</depends>
 
     <actions resource-bundle="messages.QSSBundle">
-        <action id="apply" class="irony.pycharm.qsseditor.QSSAction" text="Apply Style">
+        <action id="apply" class="irony.ide.plugin.qsseditor.QSSAction" text="Apply Style">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
@@ -63,21 +63,21 @@ Must Install Proxy Server from first(首先需要安装设计师插件)<br/><br/
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="irony.pycharm.qsseditor.QSSStartup"/>
+        <postStartupActivity implementation="irony.ide.plugin.qsseditor.QSSStartup"/>
         <applicationService
-                serviceImplementation="irony.pycharm.qsseditor.QSSState"/>
+                serviceImplementation="irony.ide.plugin.qsseditor.QSSState"/>
         <applicationConfigurable
                 parentId="language"
                 groupWeight="-500"
-                instance="irony.pycharm.qsseditor.QSSConfig"
-                id="irony.pycharm.qsseditor.QSSConfig"
+                instance="irony.ide.plugin.qsseditor.QSSConfig"
+                id="irony.ide.plugin.qsseditor.QSSConfig"
                 displayName="QSS Editor"/>
         <editorFactoryDocumentListener
-                implementation="irony.pycharm.qsseditor.QSSListener"/>
+                implementation="irony.ide.plugin.qsseditor.QSSListener"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="irony.pycharm.qsseditor.QSSDynamic"
+        <listener class="irony.ide.plugin.qsseditor.QSSDynamic"
                   topic="com.intellij.ide.plugins.DynamicPluginListener"/>
     </applicationListeners>
 

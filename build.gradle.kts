@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.intellij") version "1.17.2"
 }
 
-group = "irony.pycharm"
+group = "irony.ide.plugin"
 version = "1.0.0"
 
 repositories {

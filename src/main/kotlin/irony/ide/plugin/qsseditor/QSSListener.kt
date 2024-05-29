@@ -1,4 +1,4 @@
-package irony.pycharm.qsseditor
+package irony.ide.plugin.qsseditor
 
 import com.intellij.openapi.editor.event.DocumentEvent
 import com.intellij.openapi.editor.event.DocumentListener

@@ -8,7 +8,7 @@
  * Site: https://pyqt.site , https://pyqt5.com
  */
 
-package irony.pycharm.qsseditor
+package irony.ide.plugin.qsseditor
 
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.options.Configurable.NoScroll

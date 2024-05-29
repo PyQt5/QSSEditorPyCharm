@@ -10,7 +10,7 @@
 
 @file:Suppress("ktlint:standard:no-wildcard-imports")
 
-package irony.pycharm.qsseditor
+package irony.ide.plugin.qsseditor
 
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.util.ui.update.MergingUpdateQueue
@@ -111,14 +111,14 @@ class QSSClient : WebSocketListener() {
             host: String,
             port: Int,
         ) {
-            if (host == this.host && port == this.port) {
+            if (host == Companion.host && port == Companion.port) {
                 if (socket != null || self != null) {
                     return
                 }
             }
 
-            this.host = host
-            this.port = port
+            Companion.host = host
+            Companion.port = port
 
             disconnect()
 
