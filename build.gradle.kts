@@ -20,15 +20,15 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.24")
+    implementation(files("libs/css-openapi.jar"))
 }
 
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
     version.set("2021.3")
-    type.set("PY") // Target IDE Platform
-
-    plugins.set(listOf())
+    type.set("PC") // Target IDE Platform
+    // plugins.set(listOf("CSS"))
 }
 
 tasks {

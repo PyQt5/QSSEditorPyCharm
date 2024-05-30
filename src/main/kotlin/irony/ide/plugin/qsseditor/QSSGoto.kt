@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2024. Irony All Rights Reserved.
+ * Project: QSSEditor
+ * File: QSSGoto.kt
+ * Date: 2024/5/30 下午9:35
+ * Author: Irony
+ * Email: 892768447@qq.com
+ * Site: https://pyqt.site , https://pyqt5.com
+ */
+
 package irony.ide.plugin.qsseditor
 
 import com.intellij.navigation.ChooseByNameContributorEx
