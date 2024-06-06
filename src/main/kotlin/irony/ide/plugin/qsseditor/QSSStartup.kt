@@ -21,5 +21,6 @@ class QSSStartup : StartupActivity {
         // 启动客户端连接
         Log.info("project[${project.name}] opened")
         QSSClient.connect(QSSState.instance.host, QSSState.instance.port)
+        QSSCompletion.load(this.javaClass.getResource("/data/qss.json") ?: return)
     }
 }
