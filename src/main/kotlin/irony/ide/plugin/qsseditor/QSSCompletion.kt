@@ -41,7 +41,7 @@ class QSSCompletion : CompletionContributor() {
                     if (!isSupport(parameters)) {
                         return
                     }
-                    result.addAllElements(elements)
+                    result.addAllElements(properties)
                 }
             },
         )
@@ -60,10 +60,11 @@ class QSSCompletion : CompletionContributor() {
     }
 
     companion object {
-        val elements: MutableList<LookupElement> = ArrayList()
+        val properties: MutableList<LookupElement> = ArrayList()
+        val pseudos: MutableList<LookupElement> = ArrayList()
 
         fun load(url: URL) {
-            if (elements.isNotEmpty()) {
+            if (properties.isNotEmpty()) {
                 return
             }
             Log.info("prepare some qss class")
@@ -144,22 +145,41 @@ class QSSCompletion : CompletionContributor() {
                     "QWizardPage",
                 )
             words.forEach { v ->
-                elements.add(LookupElementBuilder.create(v))
+                properties.add(LookupElementBuilder.create(v).withIcon(QSSIcon.IconProperty))
             }
 
             Log.info("load qss.json")
             val json = Json.parseToJsonElement(url.readText()).jsonObject
+
             Log.info("load qss properties")
             json.getValue("properties").jsonArray.forEach { v ->
-                elements.add(LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content))
+                properties.add(
+                    LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content)
+                        .withTypeText("Property") // 最右侧提示文本
+                        .withCaseSensitivity(true) // 大小写不敏感
+                        .withIcon(QSSIcon.IconProperty),
+                    // .appendTailText("(" + v.jsonObject.getValue("syntax").jsonPrimitive.content.replace("\n", " ") + ")", true),
+                )
             }
+
             Log.info("load qss pseudoClasses")
             json.getValue("pseudoClasses").jsonArray.forEach { v ->
-                elements.add(LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content))
+                pseudos.add(
+                    LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content)
+                        .withTypeText("PseudoClasses")
+                        .withCaseSensitivity(true)
+                        .withIcon(QSSIcon.IconPseudoClass),
+                )
             }
+
             Log.info("load qss pseudoElements")
             json.getValue("pseudoElements").jsonArray.forEach { v ->
-                elements.add(LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content))
+                pseudos.add(
+                    LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content)
+                        .withTypeText("PseudoClasses")
+                        .withCaseSensitivity(true)
+                        .withIcon(QSSIcon.IconPseudoElement),
+                )
             }
         }
     }
