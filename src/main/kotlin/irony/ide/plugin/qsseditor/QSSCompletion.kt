@@ -158,7 +158,6 @@ class QSSCompletion : CompletionContributor() {
                         .withTypeText("Property") // 最右侧提示文本
                         .withCaseSensitivity(true) // 大小写不敏感
                         .withIcon(QSSIcon.IconProperty),
-                    // .appendTailText("(" + v.jsonObject.getValue("syntax").jsonPrimitive.content.replace("\n", " ") + ")", true),
                 )
             }
 
