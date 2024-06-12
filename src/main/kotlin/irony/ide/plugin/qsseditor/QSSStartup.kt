@@ -22,6 +22,6 @@ class QSSStartup : StartupActivity {
         Log.info("project[${project.name}] opened")
         QSSClient.connect(QSSState.instance.host, QSSState.instance.port)
         QSSCompletion.load(this.javaClass.getResource("/data/qss.json") ?: return)
-        QSSDoc.load(this.javaClass.getResource("/data/qss.json") ?: return)
+        QSSDocProvider.load(this.javaClass.getResource("/data/qss.json") ?: return)
     }
 }

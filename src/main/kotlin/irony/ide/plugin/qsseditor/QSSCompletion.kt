@@ -19,10 +19,8 @@ import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 import java.net.URL
 
 private val Log = logger<QSSCompletion>()
@@ -149,12 +147,12 @@ class QSSCompletion : CompletionContributor() {
             }
 
             Log.info("load qss.json")
-            val json = Json.parseToJsonElement(url.readText()).jsonObject
+            val json = Json.decodeFromString<QSSDocJson>(url.readText())
 
             Log.info("load qss properties")
-            json.getValue("properties").jsonArray.forEach { v ->
+            json.properties.forEach { v ->
                 properties.add(
-                    LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content)
+                    LookupElementBuilder.create(v.name)
                         .withTypeText("Property") // 最右侧提示文本
                         .withCaseSensitivity(true) // 大小写不敏感
                         .withIcon(QSSIcon.IconProperty),
@@ -162,9 +160,9 @@ class QSSCompletion : CompletionContributor() {
             }
 
             Log.info("load qss pseudoClasses")
-            json.getValue("pseudoClasses").jsonArray.forEach { v ->
+            json.pseudoClasses.forEach { v ->
                 pseudos.add(
-                    LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content)
+                    LookupElementBuilder.create(v.name)
                         .withTypeText("PseudoClasses")
                         .withCaseSensitivity(true)
                         .withIcon(QSSIcon.IconPseudoClass),
@@ -172,9 +170,9 @@ class QSSCompletion : CompletionContributor() {
             }
 
             Log.info("load qss pseudoElements")
-            json.getValue("pseudoElements").jsonArray.forEach { v ->
+            json.pseudoElements.forEach { v ->
                 pseudos.add(
-                    LookupElementBuilder.create(v.jsonObject.getValue("name").jsonPrimitive.content)
+                    LookupElementBuilder.create(v.name)
                         .withTypeText("PseudoClasses")
                         .withCaseSensitivity(true)
                         .withIcon(QSSIcon.IconPseudoElement),

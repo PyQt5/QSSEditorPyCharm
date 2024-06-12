@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024. Irony All Rights Reserved.
  * Project: QSSEditor
- * File: QSSDoc.kt
+ * File: QSSDocProvider.kt
  * Date: 2024/6/10 下午10:25
  * Author: Irony
  * Email: 892768447@qq.com
@@ -19,20 +19,20 @@ import com.intellij.openapi.util.Key
 import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.psi.*
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.*
 import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser
 import java.net.URL
 
-private val Log = logger<QSSDoc>()
+private val Log = logger<QSSDocProvider>()
 
-class QSSDoc : AbstractDocumentationProvider() {
+class QSSDocProvider : AbstractDocumentationProvider() {
     override fun generateDoc(
         element: PsiElement?,
         originalElement: PsiElement?,
     ): String? {
-        Log.info("generateDoc")
         if (element != null) {
             // val range = element.getUserData(KEY_RANGE)
             val text = element.getUserData(KEY_TEXT) ?: element.text
@@ -104,44 +104,35 @@ class QSSDoc : AbstractDocumentationProvider() {
             }
 
             Log.info("load qss.json")
-            val json = Json.parseToJsonElement(url.readText()).jsonObject
+            val json = Json.decodeFromString<QSSDocJson>(url.readText())
 
             Log.info("load qss properties")
-            json.getValue("properties").jsonArray.forEach { v ->
-                val doc = v.jsonObject.getValue("description").jsonObject.getValue("value").jsonPrimitive.content
+            json.properties.forEach { v ->
                 var syntax = ""
-                if (v.jsonObject.containsKey("syntax")) {
-                    syntax = "(" + v.jsonObject.getValue("syntax").jsonPrimitive.content.replace("\n", " ") + ")"
+                if (v.syntax.isNotEmpty()) {
+                    syntax = "(" + v.syntax.replace("\n", " ") + ")"
                 }
                 var refs = ""
-                v.jsonObject.getValue("references").jsonArray.forEach { vv ->
-                    refs += "[${vv.jsonObject.getValue(
-                        "name",
-                    ).jsonPrimitive.content}](${vv.jsonObject.getValue("url").jsonPrimitive.content})"
+                v.references.forEach { vv ->
+                    refs += "[${vv.name}](${vv.url})"
                 }
                 descriptions[
-                    v.jsonObject.getValue(
-                        "name",
-                    ).jsonPrimitive.content,
-                ] = generateHtml(doc + "\n\n" + syntax + "\n\n" + refs)
+                    v.name,
+                ] = generateHtml(v.description.value + "\n\n" + syntax + "\n\n" + refs)
             }
 
             Log.info("load qss pseudoClasses")
-            json.getValue("pseudoClasses").jsonArray.forEach { v ->
+            json.pseudoClasses.forEach { v ->
                 descriptions[
-                    v.jsonObject.getValue(
-                        "name",
-                    ).jsonPrimitive.content,
-                ] = generateHtml(v.jsonObject.getValue("description").jsonPrimitive.content)
+                    v.name,
+                ] = generateHtml(v.description)
             }
 
             Log.info("load qss pseudoElements")
-            json.getValue("pseudoElements").jsonArray.forEach { v ->
+            json.pseudoElements.forEach { v ->
                 descriptions[
-                    v.jsonObject.getValue(
-                        "name",
-                    ).jsonPrimitive.content,
-                ] = generateHtml(v.jsonObject.getValue("description").jsonPrimitive.content)
+                    v.name,
+                ] = generateHtml(v.description)
             }
         }
 
