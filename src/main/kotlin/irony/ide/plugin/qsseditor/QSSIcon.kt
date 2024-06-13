@@ -21,4 +21,10 @@ object QSSIcon {
 
     @JvmField
     val IconPseudoElement = IconLoader.getIcon("/icons/pseudo-element.svg", QSSIcon::class.java)
+
+    @JvmField
+    val IconStatusOn = IconLoader.getIcon("/icons/status_on.svg", QSSIcon::class.java)
+
+    @JvmField
+    val IconStatusOff = IconLoader.getIcon("/icons/status_off.svg", QSSIcon::class.java)
 }

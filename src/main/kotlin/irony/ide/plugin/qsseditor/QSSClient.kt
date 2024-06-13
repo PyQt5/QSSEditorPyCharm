@@ -12,6 +12,7 @@
 
 package irony.ide.plugin.qsseditor
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.util.ui.update.MergingUpdateQueue
 import com.intellij.util.ui.update.Update
@@ -43,6 +44,9 @@ class QSSClient : WebSocketListener() {
     ) {
         twice = 0
         Log.info("onOpen")
+        ApplicationManager.getApplication().messageBus.syncPublisher(
+            STATUS_TOPIC,
+        ).onStatusChanged(true)
     }
 
     override fun onMessage(
@@ -72,6 +76,10 @@ class QSSClient : WebSocketListener() {
         reason: String,
     ) {
         Log.debug("onClosing")
+        ApplicationManager.getApplication().messageBus.syncPublisher(
+            STATUS_TOPIC,
+        ).onStatusChanged(false)
+
         if (done) {
             return
         }
@@ -84,6 +92,10 @@ class QSSClient : WebSocketListener() {
         t: Throwable,
         response: Response?,
     ) {
+        ApplicationManager.getApplication().messageBus.syncPublisher(
+            STATUS_TOPIC,
+        ).onStatusChanged(false)
+
         if (twice < 50) {
             Log.warn("onFailure, ${t.message}")
         }
