@@ -7,7 +7,7 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>QSSEditor</name>
 
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <idea-version since-build="213"/>
 
